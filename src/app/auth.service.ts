@@ -26,7 +26,7 @@ export class AuthService {
   }
 
 
-  signUp(username, email, password,name) {
+  signUp(username, email, password,name,category,cinId) {
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -40,7 +40,10 @@ export class AuthService {
         "name":name,
         "email":email,
         "password":password,
-        "role":["pm"]
+        "category":category,
+        "cindId":cinId,
+        
+        "role":["user"]
       },
       httpOptions
 

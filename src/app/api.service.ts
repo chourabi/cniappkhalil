@@ -10,7 +10,204 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
 
+  addNewVehicule(data){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/vehicules/add',data,
+      
+      httpOptions
 
+    )
+  }
+
+  addNewVehiculeRequest(data){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/requests/add',data,
+      
+      httpOptions
+
+    )
+  }
+
+  getVehiculesRequest(){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/requests/listauthenticated',
+      
+      httpOptions
+
+    )
+  }
+
+
+  getAdminVehiculesRequest(){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/requests/list',
+      
+      httpOptions
+
+    )
+  }
+
+  approveVehiculesRequest(id){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/requests/approve/'+id,
+      httpOptions
+    )
+  }
+
+
+  notificationsList(){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/notifications/list',
+      
+      httpOptions
+
+    )
+  }
+  
+
+
+
+  
+  getVehiculesList(){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/vehicules/list',
+      
+      httpOptions
+
+    )
+  }
+
+  getEmployeesList(){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/employees/list',
+      
+      httpOptions
+
+    )
+  }
+
+  deleteVehicule(id){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/vehicules/delete/'+id,
+      
+      httpOptions
+
+    )
+  }
+
+  updateVehicule(id,data){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/vehicules/update/'+id,data,
+      
+      httpOptions
+
+    )
+  }
+
+  detailsVehicule(id){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/vehicules/details/'+id,
+      
+      httpOptions
+
+    )
+  }
+
+  
 
 
 

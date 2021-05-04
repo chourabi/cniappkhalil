@@ -1,0 +1,117 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">My vehicules requests</h1>
+    <p class="mb-4">
+        The table down below show a list of all your requests.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/new-vehicule-request" class="btn btn-primary">Request vehicule</a>
+    </p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">My vehicules requests</h6>
+        </div>
+        <div class="card-body">
+            <ol class="list-group list-group-numbered">
+                
+                <li *ngFor="let r of requestList" class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto" style="width: 100%;">
+                    <div class="fw-bold"><strong>{{r.request.vehicule.mark}} {{r.request.vehicule.model}} - {{r.request.vehicule.registrationPlate}}</strong></div>
+                    <p>
+                        {{r.request.reason}}
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Start Location</label>
+                                <p><i class="fas fa-route"></i> {{r.request.startLocation}}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            
+    
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <p> <i class="fas fa-calendar-week"></i> {{r.request.startDate}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Start time</label>
+                                        <p><i class="fas fa-clock"></i> {{r.request.startTime}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Arrival Location</label>
+                                <p><i class="fas fa-route"></i> {{r.request.arrivalLocation}}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            
+    
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Arrival Date</label>
+                                        <p><i class="fas fa-calendar-week"></i> {{r.request.arrivalDate}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Arrival time</label>
+                                        <p><i class="fas fa-clock"></i> {{r.request.arrivalTime}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="">Passengers</label>
+                                <p *ngIf="r.passengers.length == 0">
+                                    No passengers selected.
+                                </p>
+                                <ol class="list-group list-group-numbered" *ngIf="r.passengers.length  != 0">
+                                    <li *ngFor="let s of r.passengers;let j = index;" class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">{{s.name}}</div>
+                                        {{s.cinId}}
+                                    </div>
+                                    
+                                    </li>
+    
+                                </ol>
+                            </div>
+                        </div>
+        
+                    </div>
+
+
+
+                  </div>
+                  <span *ngIf="r.request.status == 0" class="badge bg-info rounded-pill text-light">waiting for confirmation</span>
+                  <span *ngIf="r.request.status == 1" class="badge bg-warning rounded-pill text-light">In treatment</span>
+                  <span *ngIf="r.request.status == 2" class="badge bg-success rounded-pill text-light">Approved</span>
+                  <span *ngIf="r.request.status == 3" class="badge bg-danger rounded-pill text-light">Refused</span>
+                  
+                </li>
+              </ol>
+
+
+
+        </div>
+    </div>
+
+
+</div>

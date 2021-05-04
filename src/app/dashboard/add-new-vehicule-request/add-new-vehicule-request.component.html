@@ -1,0 +1,169 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">New vehicules requests</h1>
+    <p class="mb-4">
+        In order to have an access on one of vehicules please fill out this form.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/vehicule-request-list" class="btn btn-secondary">Back</a>
+    </p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vehicule request form</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="">Employee:</label>
+                </div>
+                <div class="col-sm-9">
+                    {{user.name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="">CIN ID:</label>
+                </div>
+                <div class="col-sm-9">
+                    {{user.cinId}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="">Category:</label>
+                </div>
+                <div class="col-sm-9">
+                    {{user.category}}
+                </div>
+            </div>
+
+            <hr>
+            
+            
+            <form [formGroup]="vehiculeForm" (ngSubmit)="addNow()" >
+                <div class="form-group">
+                    <label for="">Vehicule</label>
+                    
+                    <select class="form-control" formControlName="vehicule_id">
+                        <option value="">Choose a vehicule</option>
+                        <option  *ngFor="let v of vehicules" value="{{v.id}}">{{v.mark}} {{v.model}} / {{v.registrationPlate}}</option>
+                        
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Resaon  </label>
+                    <textarea type="text" placeholder="Why you need this vehicule..." class="form-control" formControlName="resaon"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Start Location</label>
+                            <input type="text" placeholder="Exmpl Tunis..." class="form-control" formControlName="start_location">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Start Date</label>
+                                    <input type="date"  class="form-control" formControlName="start_date">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Start time</label>
+                                    <input type="time"  class="form-control" formControlName="start_time">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Arrival Location</label>
+                            <input type="text" placeholder="Exmpl Tunis..." class="form-control" formControlName="arrival_location">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Arrival Date</label>
+                                    <input type="date"  class="form-control" formControlName="Arrival_date">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Arrival time</label>
+                                    <input type="time"  class="form-control" formControlName="Arrival_time">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Cargo  </label>
+                    <textarea type="text" placeholder="Cargo..." class="form-control" formControlName="cargo"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Add passengers</label>
+                            <select class="form-control" formControlName="selected_passenger">
+                                <option *ngFor="let e of employees" value="{{e.id}}" >{{e.name+' / '+e.cinId}}</option>
+                            </select>
+                            <button type="button" class="btn btn-sm btn-info my-2" (click)="addSelectedPassenger()"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+        
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="">Passengers</label>
+                        <p *ngIf="selectedPassengers.length == 0">
+                            No passengers selected.
+                        </p>
+                        <ol class="list-group list-group-numbered" *ngIf="selectedPassengers.length  != 0">
+                            <li *ngFor="let s of selectedPassengers;let j = index;" class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">{{s.name}}</div>
+                                {{s.cinId}}
+                              </div>
+                              <span class="badge  rounded-pill text-danger" (click)="deletePassender(j)">
+                                  <i class="fas fa-trash" style="font-size: 22px;cursor:pointer"></i>
+                              </span>
+                            </li>
+
+                          </ol>
+        
+
+                    </div>
+                </div>
+
+
+
+                
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="! vehiculeForm.valid">Create now </button>
+                </div>
+                
+                
+                
+                
+                
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+</div>

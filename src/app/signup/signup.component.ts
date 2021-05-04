@@ -14,6 +14,8 @@ export class SignupComponent implements OnInit {
   signinForm = new FormGroup({
     username : new FormControl('',Validators.required),
     name : new FormControl('',Validators.required),
+    category: new FormControl('',Validators.required),
+    cinId : new FormControl('',Validators.required),
     email : new FormControl('',Validators.email),
     password : new FormControl('',Validators.required),
     
@@ -35,9 +37,12 @@ export class SignupComponent implements OnInit {
     const password = this.signinForm.value.password;
     const name = this.signinForm.value.name;
     const email = this.signinForm.value.email;
+    const category = this.signinForm.value.category;
+    const cinId = this.signinForm.value.cinId;
+    
     
 
-    this.auth.signUp(username,email,password,name).subscribe((data:any)=>{
+    this.auth.signUp(username,email,password,name,category,cinId).subscribe((data:any)=>{
       console.log(data);
       if (data.success == true) {
         this.successMsg="Account created successfully. you can sign in now";
@@ -52,7 +57,7 @@ export class SignupComponent implements OnInit {
       
       err.error.errors.forEach(e => {
 
-        this.errMsg+=e.field+' '+e.defaultMessage+'\n';
+        this.errMsg+=e.field+', '+e.defaultMessage+'\n';
       });
       
     })

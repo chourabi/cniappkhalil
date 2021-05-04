@@ -15,12 +15,16 @@ export class HomeComponent implements OnInit {
 
   user:any;
 
+  notifications:any = [];
+
   constructor(private api:ApiService, private auth:AuthService, private router:Router) { }
 
   ngOnInit(): void {
     
 
     this.auth.info().subscribe((data:any)=>{
+      console.log(data);
+      
       this.user = data;
       
       const role = (data.roles[0].name);
@@ -34,9 +38,9 @@ export class HomeComponent implements OnInit {
           },
   
           {
-            title: "SUPER SECOND TEXT",
+            title: "vehicules requests",
             counter: 0,
-            link: '',
+            link: '/dashboard/home/admin-vehicule-request-list',
             subMenus: []
           },
           ]
@@ -44,28 +48,72 @@ export class HomeComponent implements OnInit {
   
         case "ROLE_PM":
           this.menu = [
-          {
-            title: "Dashboard",
-            counter: 0,
-            link: '/dashboard/home/',
-            subMenus: []
-          },
+            {
+              title: "Acceuil",
+              counter: 0,
+              link: '/dashboard/home/',
+              subMenus: []
+            },
+            {
+              title: "Vehicules",
+              counter: 0,
+              link: '/dashboard/home/vehicules',
+              subMenus: []
+            },
+              
   
   
           ]
   
-  
           break;  
+          case "ROLE_USER":
+            this.menu = [
+              {
+                title: "Acceuil",
+                counter: 0,
+                link: '/dashboard/home/',
+                subMenus: []
+              },
+              {
+                title: "My vehicules requests",
+                counter: 0,
+                link: '/dashboard/home/vehicule-request-list',
+                subMenus: []
+              },
+                
+    
+    
+            ]
+    
+            break; 
+
+
+
+          
   
         default:
           break;
       }
       
+    },()=>{
+      localStorage.clear();
+
+        this.router.navigate(['/signin'])
     })
 
+
+    this.getNotification();
  
 
 
+  }
+
+  getNotification(){
+    this.api.notificationsList().subscribe((data)=>{
+      console.log(data);
+      
+      this.notifications = data;
+    })
   }
 
 
@@ -84,6 +132,11 @@ export class HomeComponent implements OnInit {
       }
       
     })*/
+
+    localStorage.clear();
+        // router => signin
+
+        this.router.navigate(['/signin'])
   }
 
   

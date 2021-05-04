@@ -1,0 +1,187 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Vehicules requests</h1>
+    <p class="mb-4">
+        The table down below show a list of all employees requests.
+    </p>
+    <!--<p class="mb-4">
+        <a routerLink="/dashboard/home/new-vehicule-request" class="btn btn-primary">Request vehicule</a>
+    </p>-->
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vhicules requests</h6>
+        </div>
+        <div class="card-body">
+            <ol class="list-group list-group-numbered">
+                
+                <li *ngFor="let r of requestList" class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto" style="width: 100%;">
+                    <div class="fw-bold"><strong>{{r.request.vehicule.mark}} {{r.request.vehicule.model}} - {{r.request.vehicule.registrationPlate}}</strong></div>
+                    <p>
+                        {{r.request.reason}}
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Start Location</label>
+                                <p><i class="fas fa-route"></i> {{r.request.startLocation}}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            
+    
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <p> <i class="fas fa-calendar-week"></i> {{r.request.startDate}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Start time</label>
+                                        <p><i class="fas fa-clock"></i> {{r.request.startTime}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Arrival Location</label>
+                                <p><i class="fas fa-route"></i> {{r.request.arrivalLocation}}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            
+    
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Arrival Date</label>
+                                        <p><i class="fas fa-calendar-week"></i> {{r.request.arrivalDate}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Arrival time</label>
+                                        <p><i class="fas fa-clock"></i> {{r.request.arrivalTime}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="">Passengers</label>
+                                <p *ngIf="r.passengers.length == 0">
+                                    No passengers selected.
+                                </p>
+                                <ol class="list-group list-group-numbered" *ngIf="r.passengers.length  != 0">
+                                    <li *ngFor="let s of r.passengers;let j = index;" class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">{{s.name}}</div>
+                                        {{s.cinId}}
+                                    </div>
+                                    
+                                    </li>
+    
+                                </ol>
+                            </div>
+                        </div>
+        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div *ngIf="r.request.status == 0">
+                                    <button class="btn btn-success" style="margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#approve-modal">Approve</button>
+                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#refuse-modal">Refuse</button>
+
+                                </div>
+                                <!-- Button trigger modal -->
+
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="approve-modal" tabindex="-1" aria-labelledby="approve-modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" >Approve request</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <p>Do you really wann approve this request ? you can't roll back once you confirm.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="confirmRequest(r.request.id)">Confirm</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="refuse-modal" tabindex="-1" aria-labelledby="approve-modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" >Refuse request</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="">
+                                                <div class="form-group">
+                                                    <p>Do you really wann refuse this request ? you can't roll back once you confirm.</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">This message will be sent to the employee...</label>
+                                                    <textarea placeholder="why ?" class="form-control" rows="3"></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Refuse</button>
+                                                </div>
+                                            </form>
+                                            
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+        
+                    </div>
+
+
+
+                  </div>
+                  <span *ngIf="r.request.status == 0" class="badge bg-info rounded-pill text-light">waiting for confirmation</span>
+                  <span *ngIf="r.request.status == 1" class="badge bg-warning rounded-pill text-light">In treatment</span>
+                  <span *ngIf="r.request.status == 2" class="badge bg-success rounded-pill text-light">Approved</span>
+                  <span *ngIf="r.request.status == 3" class="badge bg-danger rounded-pill text-light">Refused</span>
+                  
+                </li>
+              </ol>
+
+
+
+        </div>
+    </div>
+
+
+</div>
