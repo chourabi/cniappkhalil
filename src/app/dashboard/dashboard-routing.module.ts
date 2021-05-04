@@ -19,6 +19,8 @@ const routes: Routes = [
     { path:'new-vehicule-request', component:AddNewVehiculeRequestComponent },
     { path:'vehicule-request-list', component:VehiculeRequestListComponent },
     { path:'admin-vehicule-request-list', component:AdminVehiculesRequestsComponent },
+    { path:'admin-vehicule-request-details/:id', component:AdminVehiculesRequestsComponent },
+    
     
     
     

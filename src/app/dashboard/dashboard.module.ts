@@ -12,10 +12,11 @@ import { VehiculesEditComponent } from './vehicules-edit/vehicules-edit.componen
 import { AddNewVehiculeRequestComponent } from './add-new-vehicule-request/add-new-vehicule-request.component';
 import { VehiculeRequestListComponent } from './vehicule-request-list/vehicule-request-list.component';
 import { AdminVehiculesRequestsComponent } from './admin-vehicules-requests/admin-vehicules-requests.component';
+import { RequestVehiculeDetailsComponent } from './request-vehicule-details/request-vehicule-details.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent],
+  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

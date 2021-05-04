@@ -10,6 +10,8 @@ export class AdminVehiculesRequestsComponent implements OnInit {
 
   requestList:any= [];
   passengers = [];
+  idSelectedRequest:any;
+
 
   constructor(private api:ApiService) { }
 
@@ -30,12 +32,24 @@ export class AdminVehiculesRequestsComponent implements OnInit {
   }
 
 
-  confirmRequest(id){
+  preConfirm(id){
     console.log(id);
-    this.api.approveVehiculesRequest(id).subscribe((data)=>{
-      console.log(data);
+    this.idSelectedRequest = id;
+
+    
+  }
+
+
+
+  confirmRequest(){
+
+    this.api.approveVehiculesRequest(this.idSelectedRequest).subscribe((data)=>{
+      
+      console.log(" test",data);
       this.refresh();
       
+    },(err)=>{
+      alert(err)
     })
     
   }
