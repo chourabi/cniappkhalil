@@ -25,6 +25,8 @@
                             <th>Mark</th>
                             <th>Model</th>
                             <th>Registration plate</th>
+                            <th>Status</th>
+                            
                             <th>Add date</th>
                             <th>Actions</th>
                             
@@ -47,6 +49,13 @@
                             </td>
                             <td>
                                 {{ v.registrationPlate }}
+                            </td>
+                            <td>
+                                <span class="badge badge-success" *ngIf="v.isOut == false">in parc</span>
+                                <span class="badge badge-warning" *ngIf="v.isOut == true">is out</span>
+                                
+
+                                
                             </td>
                             <td>
                                 {{ v.date }}

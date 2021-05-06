@@ -17,6 +17,8 @@ export class VehiculesEditComponent implements OnInit {
     registrationPlate: new FormControl('',Validators.required),
     note: new FormControl('',Validators.required),
     date: new FormControl(''),
+    isOut: new FormControl(false),
+    
     
   })
   id;
@@ -39,6 +41,7 @@ export class VehiculesEditComponent implements OnInit {
         registrationPlate: data.registrationPlate,
         note: data.note,
         date: data.date,
+        isOut:data.isOut
       });
     });
   }

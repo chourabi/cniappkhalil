@@ -13,7 +13,7 @@ export class VehiculesListComponent implements OnInit {
 
   getVehiculesList(){
     this.api.getVehiculesList().subscribe((data:any)=>{
-      this.vehicules = data;
+      this.vehicules = data.sort((a,b)=> a.id - b.id)
     })
   }
   ngOnInit(): void {

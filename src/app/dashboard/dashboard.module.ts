@@ -13,10 +13,12 @@ import { AddNewVehiculeRequestComponent } from './add-new-vehicule-request/add-n
 import { VehiculeRequestListComponent } from './vehicule-request-list/vehicule-request-list.component';
 import { AdminVehiculesRequestsComponent } from './admin-vehicules-requests/admin-vehicules-requests.component';
 import { RequestVehiculeDetailsComponent } from './request-vehicule-details/request-vehicule-details.component';
+import { AdminVehiculesRequestAllComponent } from './admin-vehicules-request-all/admin-vehicules-request-all.component';
+import { ParcManagerVehiculesRequestsComponent } from './parc-manager-vehicules-requests/parc-manager-vehicules-requests.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent],
+  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

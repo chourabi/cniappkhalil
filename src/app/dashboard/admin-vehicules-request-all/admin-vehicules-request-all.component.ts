@@ -3,11 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
-  selector: 'app-admin-vehicules-requests',
-  templateUrl: './admin-vehicules-requests.component.html',
-  styleUrls: ['./admin-vehicules-requests.component.css']
+  selector: 'app-admin-vehicules-request-all',
+  templateUrl: './admin-vehicules-request-all.component.html',
+  styleUrls: ['./admin-vehicules-request-all.component.css']
 })
-export class AdminVehiculesRequestsComponent implements OnInit {
+export class AdminVehiculesRequestAllComponent implements OnInit {
+
 
   requestList:any= [];
   passengers = [];
@@ -23,14 +24,14 @@ export class AdminVehiculesRequestsComponent implements OnInit {
   ngOnInit(): void {
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
-      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 0 )
+      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse();
     })
   }
 
   refresh(){
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
-      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 0 )
+      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse();
     })
   }
 

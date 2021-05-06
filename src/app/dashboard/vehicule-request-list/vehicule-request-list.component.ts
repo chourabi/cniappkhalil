@@ -14,10 +14,11 @@ export class VehiculeRequestListComponent implements OnInit {
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
-    this.api.getVehiculesRequest().subscribe((data)=>{
+    this.api.getVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
+
       
-      this.requestList = data;
+      this.requestList = data.sort((a, b) => a.id - b.id).reverse();
     })
   }
 

@@ -97,6 +97,64 @@ export class ApiService {
     )
   }
 
+  approveParcVehiculesRequest(id){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/requests/approve-parc/'+id,
+      httpOptions
+    )
+  }
+
+
+
+  refuseVehiculesRequest(id,reason){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/requests/refuse',{
+      reason:reason,
+      id:id
+    },
+      httpOptions
+    )
+  }
+
+  refuseParcVehiculesRequest(id,reason){
+    
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/requests/refuse-parc',{
+      reason:reason,
+      id:id
+    },
+      httpOptions
+    )
+  }
+
+  
+
 
   notificationsList(){
     

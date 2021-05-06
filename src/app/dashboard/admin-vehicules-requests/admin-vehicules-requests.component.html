@@ -32,17 +32,19 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="">
+
+                <form [formGroup]="deleteForm">
                     <div class="form-group">
                         <p>Do you really wann refuse this request ? you can't roll back once you confirm.</p>
                     </div>
                     <div class="form-group">
                         <label for="">This message will be sent to the employee...</label>
-                        <textarea placeholder="why ?" class="form-control" rows="3"></textarea>
+                        
+                        <textarea formControlName="reason" placeholder="why ?" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Refuse</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="refuseRequest()" [disabled]="! deleteForm.valid">Refuse</button>
                     </div>
                 </form>
                 
@@ -68,13 +70,40 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Vhicules requests</h6>
+            <h6 class="m-0 font-weight-bold text-primary">New Vehicules requests</h6>
         </div>
         <div class="card-body">
             <ol class="list-group list-group-numbered">
                 
                 <li *ngFor="let r of requestList" class="list-group-item d-flex justify-content-between align-items-start">
-                  <div class="ms-2 me-auto" style="width: 100%;">
+                  <div class="ms-2 me-auto" style="width: 100%;" >
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="">Employee:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            {{r.request.employee.name}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="">CIN ID:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            {{r.request.employee.cinId}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="">Category:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            {{r.request.employee.category}}
+                        </div>
+                    </div>
+        
+                    <hr>
+
                     <div class="fw-bold"><strong>{{r.request.vehicule.mark}} {{r.request.vehicule.model}} - {{r.request.vehicule.registrationPlate}}</strong></div>
                     <p>
                         {{r.request.reason}}
@@ -159,7 +188,7 @@
                             <div class="form-group">
                                 <div *ngIf="r.request.status == 0">
                                     <button class="btn btn-success" style="margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#approve-modal" (click)="preConfirm(r.request.id)" >Approve</button>
-                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#refuse-modal">Refuse</button>
+                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#refuse-modal" (click)="preConfirm(r.request.id)">Refuse</button>
 
                                 </div>
                                 <!-- Button trigger modal -->

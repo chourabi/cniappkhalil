@@ -3,11 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
-  selector: 'app-admin-vehicules-requests',
-  templateUrl: './admin-vehicules-requests.component.html',
-  styleUrls: ['./admin-vehicules-requests.component.css']
+  selector: 'app-parc-manager-vehicules-requests',
+  templateUrl: './parc-manager-vehicules-requests.component.html',
+  styleUrls: ['./parc-manager-vehicules-requests.component.css']
 })
-export class AdminVehiculesRequestsComponent implements OnInit {
+export class ParcManagerVehiculesRequestsComponent implements OnInit {
+
 
   requestList:any= [];
   passengers = [];
@@ -23,14 +24,14 @@ export class AdminVehiculesRequestsComponent implements OnInit {
   ngOnInit(): void {
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
-      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 0 )
+      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 1 )
     })
   }
 
   refresh(){
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
-      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 0 )
+      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 1 )
     })
   }
 
@@ -46,9 +47,7 @@ export class AdminVehiculesRequestsComponent implements OnInit {
 
   confirmRequest(){
 
-    this.api.approveVehiculesRequest(this.idSelectedRequest).subscribe((data)=>{
-      
-      console.log(" test",data);
+    this.api.approveParcVehiculesRequest(this.idSelectedRequest).subscribe((data)=>{
       this.refresh();
       
     },(err)=>{
@@ -60,11 +59,12 @@ export class AdminVehiculesRequestsComponent implements OnInit {
   refuseRequest(){
     const reason = this.deleteForm.value.reason;
 
-    this.api.refuseVehiculesRequest(this.idSelectedRequest, reason).subscribe((data)=>{
+    this.api.refuseParcVehiculesRequest(this.idSelectedRequest, reason).subscribe((data)=>{
       this.refresh();
     })
 
     
   }
+
 
 }

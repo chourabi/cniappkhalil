@@ -97,6 +97,19 @@
         
                     </div>
 
+                    
+                    <div class="row" *ngIf="r.request.status == 3" >
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="alert alert-danger">
+                                    {{r.request.cancelReason}}
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+
+
 
 
                   </div>

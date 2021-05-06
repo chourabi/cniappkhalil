@@ -38,9 +38,15 @@ export class HomeComponent implements OnInit {
           },
   
           {
-            title: "vehicules requests",
+            title: "New vehicules requests",
             counter: 0,
             link: '/dashboard/home/admin-vehicule-request-list',
+            subMenus: []
+          },
+          {
+            title: "All vehicules requests",
+            counter: 0,
+            link: '/dashboard/home/admin-vehicule-request-list-all',
             subMenus: []
           },
           ]
@@ -49,7 +55,7 @@ export class HomeComponent implements OnInit {
         case "ROLE_PM":
           this.menu = [
             {
-              title: "Acceuil",
+              title: "Dashboard",
               counter: 0,
               link: '/dashboard/home/',
               subMenus: []
@@ -60,6 +66,13 @@ export class HomeComponent implements OnInit {
               link: '/dashboard/home/vehicules',
               subMenus: []
             },
+            {
+              title: "Parc vehicules request",
+              counter: 0,
+              link: '/dashboard/home/parc-vehicule-request-list',
+              subMenus: []
+            },
+            
               
   
   
@@ -109,10 +122,10 @@ export class HomeComponent implements OnInit {
   }
 
   getNotification(){
-    this.api.notificationsList().subscribe((data)=>{
+    this.api.notificationsList().subscribe((data:any)=>{
       console.log(data);
       
-      this.notifications = data;
+      this.notifications = data.reverse();
     })
   }
 

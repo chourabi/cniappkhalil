@@ -49,7 +49,7 @@ export class AddNewVehiculeRequestComponent implements OnInit {
     });
     this.api.getVehiculesList().subscribe((data:any)=>{
       console.log(data);
-      this.vehicules = data;
+      this.vehicules = data.filter((v)=> v.isOut == false);
 
     });
     
