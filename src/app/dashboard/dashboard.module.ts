@@ -15,10 +15,15 @@ import { AdminVehiculesRequestsComponent } from './admin-vehicules-requests/admi
 import { RequestVehiculeDetailsComponent } from './request-vehicule-details/request-vehicule-details.component';
 import { AdminVehiculesRequestAllComponent } from './admin-vehicules-request-all/admin-vehicules-request-all.component';
 import { ParcManagerVehiculesRequestsComponent } from './parc-manager-vehicules-requests/parc-manager-vehicules-requests.component';
+import { DriversListComponent } from './drivers-list/drivers-list.component';
+import { DriversAddComponent } from './drivers-add/drivers-add.component';
+import { EmployeesManagemenetComponent } from './employees-managemenet/employees-managemenet.component';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { DashComponent } from './dash/dash.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent],
+  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent, DriversListComponent, DriversAddComponent, EmployeesManagemenetComponent, EmployeeAddComponent, DashComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

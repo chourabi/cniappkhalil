@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Add new driver</h1>
+    <p class="mb-4">
+        You can add as many drivers as you want the park.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/parc-drivers" class="btn btn-secondary">Back</a>
+    </p>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add new driver</h6>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="driverForm" (ngSubmit)="addNow()" >
+                <div class="form-group">
+                    <label for="">Full name</label>
+                    <input type="text" placeholder="fullname" class="form-control" formControlName="name">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" placeholder="email" class="form-control" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="">Phone </label>
+                    <input type="tel" placeholder="phone" class="form-control" formControlName="phone">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="! driverForm.valid">Create now </button>
+                </div>
+                
+                
+                
+                
+                
+            </form>
+
+        </div>
+
+    </div>
+</div>

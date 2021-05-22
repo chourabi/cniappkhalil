@@ -97,7 +97,7 @@ export class ApiService {
     )
   }
 
-  approveParcVehiculesRequest(id){
+  approveParcVehiculesRequest(id,id_driver){
     
     const token = localStorage.getItem("token");
     const tokenType = localStorage.getItem("tokenType");
@@ -108,7 +108,7 @@ export class ApiService {
         'authorization':tokenType+' '+token
       })
     };
-    return this.http.get(environment.apiEndPoint + '/api/requests/approve-parc/'+id,
+    return this.http.get(environment.apiEndPoint + '/api/requests/approve-parc/'+id+'/'+id_driver,
       httpOptions
     )
   }
@@ -268,7 +268,39 @@ export class ApiService {
   
 
 
+  getDriversList(){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/drivers/list',
+      
+      httpOptions
 
+    )
+  }
+
+  addNewDriver(data){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/drivers/add',data,
+      
+      httpOptions
+
+    )
+  }
 
 
 

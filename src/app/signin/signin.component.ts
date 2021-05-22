@@ -34,9 +34,11 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('tokenType',data.tokenType);
         
         
+        
+        
          // redirect to main dashboard
 
-         this.router.navigate(['/dashboard']);
+         this.router.navigate(['/dashboard/home/dash']);
       }
       
     },(err)=>{

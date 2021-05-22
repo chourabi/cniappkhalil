@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -19,9 +20,16 @@ export class AdminVehiculesRequestAllComponent implements OnInit {
   })
 
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('role') != "ROLE_ADMIN") {
+      this.router.navigate(['/error-page'])
+    }
+
+
+
+
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
       this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse();

@@ -20,7 +20,7 @@ export class AddNewVehiculeRequestComponent implements OnInit {
 
 
   vehiculeForm = new FormGroup({
-    vehicule_id : new FormControl('',Validators.required),
+    //vehicule_id : new FormControl('',Validators.required),
     resaon : new FormControl('',Validators.required),
     
     start_location : new FormControl('',Validators.required),
@@ -98,8 +98,10 @@ export class AddNewVehiculeRequestComponent implements OnInit {
     this.api.addNewVehiculeRequest(request).subscribe((data:any)=>{
       console.log(data);
       
-      if (data.id) {
+      if (data.success == true) {
         this.router.navigate(['/dashboard/home/vehicule-request-list'])
+      }else{
+        alert(data.message);
       }
     },(err)=>{
       alert('Something went wrong, please try again');

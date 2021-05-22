@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -14,17 +15,44 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
   passengers = [];
   idSelectedRequest:any;
 
+  drivers:any = [];
+
+
   deleteForm = new FormGroup({
     reason:new FormControl('',Validators.required)
   })
 
+  approveForm = new FormGroup({
+    driver_id:new FormControl('',Validators.required)
+  })
 
-  constructor(private api:ApiService) { }
+
+  constructor(private api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('role') != "ROLE_PM") {
+      this.router.navigate(['/error-page'])
+    }
+
+
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
       this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 1 )
+    })
+
+    this.getDrivers();
+  }
+
+  getDrivers(){
+    this.drivers = [];
+
+    this.api.getDriversList().subscribe((data:any)=>{
+      data.map((d)=>{
+        if (d.onMission == false) {
+          this.drivers.push(d);
+        }
+      })
+      
     })
   }
 
@@ -47,7 +75,7 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
 
   confirmRequest(){
 
-    this.api.approveParcVehiculesRequest(this.idSelectedRequest).subscribe((data)=>{
+    this.api.approveParcVehiculesRequest(this.idSelectedRequest,this.approveForm.value.driver_id).subscribe((data)=>{
       this.refresh();
       
     },(err)=>{

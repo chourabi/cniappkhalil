@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ApiService } from 'src/app/api.service';
 })
 export class VehiculesListComponent implements OnInit {
   vehicules:any;
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService, private router:Router) { }
 
 
   getVehiculesList(){
@@ -17,6 +18,11 @@ export class VehiculesListComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    if (localStorage.getItem('role') == "ROLE_USER") {
+      this.router.navigate(['/error-page'])
+    }
+
+
     this.getVehiculesList();
   }
 

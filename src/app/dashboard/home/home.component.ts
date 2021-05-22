@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
     this.auth.info().subscribe((data:any)=>{
       console.log(data);
+      localStorage.setItem('role',data.roles[0].name);
       
       this.user = data;
       
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
           this.menu = [{
             title: "Dashboard",
             counter: 0,
-            link: '/dashboard/home/',
+            link: '/dashboard/home/dash',
             subMenus: []
           },
   
@@ -49,6 +50,21 @@ export class HomeComponent implements OnInit {
             link: '/dashboard/home/admin-vehicule-request-list-all',
             subMenus: []
           },
+          {
+            title: "Employees",
+            counter: 0,
+            link: '/dashboard/home/admin-employees',
+            subMenus: []
+          },
+
+          {
+            title: "My vehicules requests",
+            counter: 0,
+            link: '/dashboard/home/vehicule-request-list',
+            subMenus: []
+          },
+
+
           ]
           break;
   
@@ -57,7 +73,7 @@ export class HomeComponent implements OnInit {
             {
               title: "Dashboard",
               counter: 0,
-              link: '/dashboard/home/',
+              link: '/dashboard/home/dash',
               subMenus: []
             },
             {
@@ -72,6 +88,19 @@ export class HomeComponent implements OnInit {
               link: '/dashboard/home/parc-vehicule-request-list',
               subMenus: []
             },
+            {
+              title: "Parc drivers",
+              counter: 0,
+              link: '/dashboard/home/parc-drivers',
+              subMenus: []
+            },
+
+            {
+              title: "My vehicules requests",
+              counter: 0,
+              link: '/dashboard/home/vehicule-request-list',
+              subMenus: []
+            },
             
               
   
@@ -84,7 +113,7 @@ export class HomeComponent implements OnInit {
               {
                 title: "Acceuil",
                 counter: 0,
-                link: '/dashboard/home/',
+                link: '/dashboard/home/dash',
                 subMenus: []
               },
               {

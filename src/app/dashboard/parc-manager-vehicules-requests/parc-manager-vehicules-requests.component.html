@@ -4,19 +4,35 @@
     <div class="modal fade" id="approve-modal" tabindex="-1" aria-labelledby="approve-modalLabel" aria-hidden="true">
       <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-          <h5 class="modal-title" >Approve request</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <i class="fas fa-times"></i>
-          </button>
-          </div>
-          <div class="modal-body">
-          <p>Do you really wann approve this request ? you can't roll back once you confirm.</p>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="confirmRequest()">Confirm</button>
-          </div>
+          <form [formGroup]="approveForm" >
+
+            <div class="modal-header">
+                <h5 class="modal-title" >Approve request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+                </div>
+                <div class="modal-body">
+                <p>Do you really wann approve this request ? you can't roll back once you confirm.</p>
+      
+                <div class="form-group">
+                    <label for="">Driver</label>
+                    <select class="form-control" formControlName="driver_id">
+                        <option *ngFor="let d of drivers" value="{{d.id}}"> {{d.name}} </option>
+                    </select>
+
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="confirmRequest()" [disabled]="! approveForm.valid" >Confirm</button>
+                </div>
+
+
+          </form>
+
+
+
       </div>
       </div>
   </div>

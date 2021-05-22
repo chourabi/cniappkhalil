@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Drivers List</h1>
+    <p class="mb-4">
+        The table down below show a list of all drivers in the park.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/parc-drivers-add" class="btn btn-primary">Add new</a>
+    </p>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Drivers List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Full name</th>
+                            <th>Email</th>
+                            <th>Phone number</th>
+                            <th>Status</th>
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                        <tr *ngFor="let d of drivers">
+                            <td>
+                                {{d.id}}
+                            </td>
+                            <td>
+                                {{d.name}}
+                            </td>
+                            <td>
+                                {{d.email}}
+                            </td>
+                            <td>
+                                {{d.phone}}
+                            </td>
+                            
+                            
+                            <td>
+                                <span class="badge badge-success" *ngIf="d.onMission == false">available</span>
+                                <span class="badge badge-warning" *ngIf="d.onMission == true">on mission</span>
+                                
+
+                                
+                            </td>
+                            
+                        </tr>
+                        
+                        
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -42,26 +42,6 @@ export class SignupComponent implements OnInit {
     
     
 
-    this.auth.signUp(username,email,password,name,category,cinId).subscribe((data:any)=>{
-      console.log(data);
-      if (data.success == true) {
-        this.successMsg="Account created successfully. you can sign in now";
-        this.signinForm.reset();
-      } else {
-        this.errMsg="Something went wrong, please try again.";
-      }
-
-      
-    },(err)=>{
-      console.log(err);
-      
-      err.error.errors.forEach(e => {
-
-        this.errMsg+=e.field+', '+e.defaultMessage+'\n';
-      });
-      
-    })
-
     
   }
 

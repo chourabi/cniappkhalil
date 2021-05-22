@@ -109,6 +109,21 @@
         
                     </div>
 
+                    <div class="row" *ngIf="r.request.status == 2" >
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="alert alert-success">
+                                    <p>Your request is approved, your driver for the mission is:</p>
+                                    <strong><label for="">Driver</label></strong>
+                                    <br>
+                                    {{r.request.driver.name}} / {{r.request.driver.phone}} <br>
+                                    <a href="mailto:{{r.request.driver.email}}">{{r.request.driver.email}}</a>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+
 
 
 
