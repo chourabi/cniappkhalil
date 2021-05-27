@@ -173,6 +173,24 @@ export class ApiService {
 
     )
   }
+
+  updateNotifications(){
+        
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/notifications/update',
+      
+      httpOptions
+
+    )
+  }
   
 
 
@@ -231,6 +249,23 @@ export class ApiService {
     )
   }
 
+  deleteEmployee(id){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/employees/delete/'+id,
+      
+      httpOptions
+
+    )
+  }
+
   updateVehicule(id,data){
     const token = localStorage.getItem("token");
     const tokenType = localStorage.getItem("tokenType");
@@ -242,6 +277,24 @@ export class ApiService {
       })
     };
     return this.http.post(environment.apiEndPoint + '/api/vehicules/update/'+id,data,
+      
+      httpOptions
+
+    )
+  }
+
+
+  updateDriver(id,data){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/drivers/update/'+id,data,
       
       httpOptions
 
@@ -265,6 +318,22 @@ export class ApiService {
     )
   }
 
+  detailsDriver(id){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/drivers/details/'+id,
+      
+      httpOptions
+
+    )
+  }
   
 
 
@@ -303,6 +372,43 @@ export class ApiService {
   }
 
 
+
+  deleteRequest(id){
+
+
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/requests/delete/'+id,
+      
+      httpOptions
+
+    )
+  }
+
+
+  clearRequestsHistory(){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/requests/clear/',
+      
+      httpOptions
+
+    )
+  }
 
 
 }

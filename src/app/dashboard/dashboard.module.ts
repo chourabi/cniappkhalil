@@ -20,10 +20,11 @@ import { DriversAddComponent } from './drivers-add/drivers-add.component';
 import { EmployeesManagemenetComponent } from './employees-managemenet/employees-managemenet.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { DashComponent } from './dash/dash.component';
+import { DriversEditComponent } from './drivers-edit/drivers-edit.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent, DriversListComponent, DriversAddComponent, EmployeesManagemenetComponent, EmployeeAddComponent, DashComponent],
+  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent, DriversListComponent, DriversAddComponent, EmployeesManagemenetComponent, EmployeeAddComponent, DashComponent, DriversEditComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     SigninComponent,
     SignupComponent,
     ErrorPageComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,

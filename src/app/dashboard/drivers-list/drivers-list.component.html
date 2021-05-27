@@ -26,6 +26,8 @@
                             <th>Email</th>
                             <th>Phone number</th>
                             <th>Status</th>
+                            <th>Actions</th>
+                            
                             
                         </tr>
                     </thead>
@@ -52,6 +54,12 @@
                                 <span class="badge badge-warning" *ngIf="d.onMission == true">on mission</span>
                                 
 
+                                
+                            </td>
+                            <td>
+                                <button class="btn-sm btn btn-info" style="margin-right: 10px;" [routerLink]="'/dashboard/home/parc-drivers-edit/'+d.id">Edit</button>
+                                <button class="btn-sm btn btn-danger" (click)="deleteDriver(d.id)" >Delete</button>
+                                
                                 
                             </td>
                             

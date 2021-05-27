@@ -6,8 +6,24 @@
         The table down below show a list of all your requests.
     </p>
     <p class="mb-4">
-        <a routerLink="/dashboard/home/new-vehicule-request" class="btn btn-primary">Request vehicule</a>
+        <button class="btn btn-danger" (click)="clearHistory() ">Clear history</button>
     </p>
+
+    
+  <div class="row my-3">
+    <div class="col-sm-12">
+        <label for="">Filter</label>
+        <select class="form-control" (change)="updateList($event)" >
+            <option value="">All</option>
+            <option value="0">waiting for confirmation</option>
+            <option value="1">in treatment</option>
+            <option value="2">approved</option>
+            <option value="3">refused</option>
+            
+            
+        </select>
+    </div>
+  </div>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -75,6 +91,15 @@
                         </div>
                     </div>
 
+                    <div class="row" *ngIf="r.request.cargo != '' ">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">cargo</label>
+                                <p> {{r.request.cargo}}</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
@@ -123,6 +148,15 @@
                         </div>
         
                     </div>
+
+                    <div class="row" *ngIf="(r.request.status == 2) || (r.request.status == 3) " >
+                        <div class="col-sm-12">
+                            <button class="btn-sm btn btn-danger" (click)="deleteRequest(r.request.id)" >Delete</button>
+                        </div>
+        
+                    </div>
+
+                    
 
 
 

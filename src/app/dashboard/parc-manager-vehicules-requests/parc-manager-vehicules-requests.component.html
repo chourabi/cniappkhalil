@@ -84,6 +84,18 @@
       <a routerLink="/dashboard/home/new-vehicule-request" class="btn btn-primary">Request vehicule</a>
   </p>-->
 
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="alert alert-warning">
+              <ul>
+                  <li *ngFor="let m of warningMessage">
+                    {{m}}
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
   <div class="card shadow mb-4">
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">New Vehicules requests</h6>
@@ -176,6 +188,15 @@
                           </div>
                       </div>
                   </div>
+
+                  <div class="row" *ngIf="r.request.cargo != '' ">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">cargo</label>
+                            <p> {{r.request.cargo}}</p>
+                        </div>
+                    </div>
+                </div>
 
                   <div class="row">
                       <div class="col-sm-12">

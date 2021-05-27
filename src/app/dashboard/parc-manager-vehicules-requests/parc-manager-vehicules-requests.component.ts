@@ -26,6 +26,9 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
     driver_id:new FormControl('',Validators.required)
   })
 
+  warningMessage = [];
+
+
 
   constructor(private api:ApiService,private router:Router) { }
 
@@ -41,7 +44,45 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
     })
 
     this.getDrivers();
+
+    this.checkWarningMessage();
   }
+
+
+  checkWarningMessage(){
+    this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
+     
+      var toCheckDriversAndVehicules = this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 2 )
+
+      console.log("helo world",toCheckDriversAndVehicules);
+
+      toCheckDriversAndVehicules.forEach(r => {
+        startDate: "2021-05-25"
+        var requestDate = new Date(r.request.startDate);
+
+        var today = new Date();
+
+        if ( (today.getDate() == requestDate.getDate()) &&
+        (today.getMonth() == requestDate.getMonth()) &&
+        (today.getFullYear() == requestDate.getFullYear())
+        ) {
+          this.warningMessage.push('You have a new vehicule request assigned to '+r.request.driver.name+' on the vehicule : '+r.request.vehicule.registrationPlate+' today');
+        }
+
+      });
+
+    })
+  }
+
+
+
+
+
+
+
+
+
+
 
   getDrivers(){
     this.drivers = [];

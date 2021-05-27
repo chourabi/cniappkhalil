@@ -58,11 +58,19 @@ export class HomeComponent implements OnInit {
           },
 
           {
-            title: "My vehicules requests",
+            title: "historic de mes demandes",
             counter: 0,
             link: '/dashboard/home/vehicule-request-list',
             subMenus: []
           },
+          {
+            title: "New vehicule request",
+            counter: 0,
+            link: '/dashboard/home/new-vehicule-request',
+            subMenus: []
+          },
+          
+          
 
 
           ]
@@ -96,9 +104,15 @@ export class HomeComponent implements OnInit {
             },
 
             {
-              title: "My vehicules requests",
+              title: "historic de mes demandes",
               counter: 0,
               link: '/dashboard/home/vehicule-request-list',
+              subMenus: []
+            },
+            {
+              title: "New vehicule request",
+              counter: 0,
+              link: '/dashboard/home/new-vehicule-request',
               subMenus: []
             },
             
@@ -117,9 +131,15 @@ export class HomeComponent implements OnInit {
                 subMenus: []
               },
               {
-                title: "My vehicules requests",
+                title: "historic de mes demandes",
                 counter: 0,
                 link: '/dashboard/home/vehicule-request-list',
+                subMenus: []
+              },
+              {
+                title: "New vehicule request",
+                counter: 0,
+                link: '/dashboard/home/new-vehicule-request',
                 subMenus: []
               },
                 
@@ -150,14 +170,28 @@ export class HomeComponent implements OnInit {
 
   }
 
+  newNotifcationsCount = [];
+
+
   getNotification(){
     this.api.notificationsList().subscribe((data:any)=>{
       console.log(data);
+
+      data.forEach(n => {
+        if (n.seen == false) {
+          this.newNotifcationsCount.push(n);
+        }
+      });
       
       this.notifications = data.reverse();
     })
   }
 
+  updateNotifications(){
+    this.api.updateNotifications().subscribe((data)=>{
+      this.getNotification();
+    });
+  }
 
 
 

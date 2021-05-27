@@ -36,6 +36,41 @@ export class AdminVehiculesRequestAllComponent implements OnInit {
     })
   }
 
+  updateList(e){
+    const f = e.target.value;
+
+    if (f != '') {
+      console.log(f);
+      
+      this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
+        console.log(data);
+
+
+        
+
+       
+        this.requestList.sort((a, b) => a.request.id - b.request.id).reverse();
+
+        var tmp = [];
+
+        this.requestList.forEach(r => {
+          if (r.request.status == f) {
+            tmp.push(r);
+          }
+        });
+
+
+        this.requestList = tmp;
+        
+      })
+
+
+    }else{
+      this.refresh();
+    }
+    
+  }
+
   refresh(){
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);

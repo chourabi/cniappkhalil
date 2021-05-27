@@ -15,6 +15,10 @@ export class EmployeesManagemenetComponent implements OnInit {
   constructor(private api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
+    this.getEmployeeList() 
+  }
+
+  getEmployeeList(){
     if (localStorage.getItem('role') != "ROLE_ADMIN") {
       this.router.navigate(['/error-page'])
     }
@@ -24,6 +28,23 @@ export class EmployeesManagemenetComponent implements OnInit {
       
       this.employees = data;
     })
+
+  }
+
+
+  deleteEmployee(id){
+      if (confirm("Do you really wonna delete this item ?")) {
+        this.api.deleteEmployee(id).subscribe((data:any)=>{
+          if (data.success) {
+            this.getEmployeeList();
+          } else {
+            alert(data.message);
+          }
+        },(err)=>{
+          alert('Something went wrong, please try again.')
+        })
+      }
+    
   }
 
 }

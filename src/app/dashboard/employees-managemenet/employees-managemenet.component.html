@@ -28,6 +28,8 @@
                             <th>Role</th>
                             <th>Category</th>
                             <th>CinId</th>
+                            <th>Actions</th>
+                            
                             
                             
                         </tr>
@@ -57,6 +59,11 @@
                             <td>
                                 {{d.cinId}}
                             </td>
+                            <td>
+                                <button class="btn-sm btn btn-danger" (click)="deleteEmployee(d.id)" >Delete</button>
+                                
+                            </td>
+                            
 
 
                             

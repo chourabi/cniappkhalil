@@ -22,4 +22,77 @@ export class VehiculeRequestListComponent implements OnInit {
     })
   }
 
+  updateList(e){
+    const f = e.target.value;
+
+    if (f != '') {
+      console.log(f);
+      
+      this.api.getVehiculesRequest().subscribe((data:any)=>{
+        this.requestList = data;
+        console.log(data);
+
+
+        
+
+       
+        this.requestList.sort((a, b) => a.request.id - b.request.id).reverse();
+
+        var tmp = [];
+
+        this.requestList.forEach(req => {
+          if (req.request.status == f) {
+            tmp.push(req);
+          }
+        });
+
+
+        console.log(tmp);
+        
+        this.requestList = tmp;
+        
+      })
+
+
+    }else{
+      this.api.getVehiculesRequest().subscribe((data:any)=>{
+        console.log(data);
+  
+        
+        this.requestList = data.sort((a, b) => a.id - b.id).reverse();
+      })
+    }
+    
+  }
+
+
+  deleteRequest(id){
+    if (confirm("do you really wanna delete this item?")) {
+      this.api.deleteRequest(id).subscribe((data)=>{
+
+        this.api.getVehiculesRequest().subscribe((data:any)=>{
+          console.log(data);
+          this.requestList = data.sort((a, b) => a.id - b.id).reverse();
+        })
+
+
+      })
+    }
+  }
+
+
+  clearHistory(){
+    if (confirm("Are you sure you want to clear your old requests histoy ?")) {
+        this.api.clearRequestsHistory().subscribe((data)=>{
+          alert("Your request history is cleared");
+          this.api.getVehiculesRequest().subscribe((data:any)=>{
+            console.log(data);
+      
+            
+            this.requestList = data.sort((a, b) => a.id - b.id).reverse();
+          })
+        })
+    }
+  }
+
 }

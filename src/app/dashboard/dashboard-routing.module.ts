@@ -8,6 +8,7 @@ import { DashComponent } from './dash/dash.component';
 
 import { DashboardComponent } from './dashboard.component';
 import { DriversAddComponent } from './drivers-add/drivers-add.component';
+import { DriversEditComponent } from './drivers-edit/drivers-edit.component';
 import { DriversListComponent } from './drivers-list/drivers-list.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeesManagemenetComponent } from './employees-managemenet/employees-managemenet.component';
@@ -25,7 +26,10 @@ const routes: Routes = [
     { path:"dash", component:DashComponent },
 
     { path:'parc-drivers', component:DriversListComponent },
+
     { path:'parc-drivers-add', component:DriversAddComponent },
+    { path:'parc-drivers-edit/:id', component:DriversEditComponent },
+    
     
 
     
