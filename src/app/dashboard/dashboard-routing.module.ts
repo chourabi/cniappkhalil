@@ -11,8 +11,10 @@ import { DriversAddComponent } from './drivers-add/drivers-add.component';
 import { DriversEditComponent } from './drivers-edit/drivers-edit.component';
 import { DriversListComponent } from './drivers-list/drivers-list.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { EmployeesManagemenetComponent } from './employees-managemenet/employees-managemenet.component';
 import { HomeComponent } from './home/home.component';
+import { ParcManagerAllRequestsComponent } from './parc-manager-all-requests/parc-manager-all-requests.component';
 import { ParcManagerVehiculesRequestsComponent } from './parc-manager-vehicules-requests/parc-manager-vehicules-requests.component';
 import { VehiculeRequestListComponent } from './vehicule-request-list/vehicule-request-list.component';
 import { VehiculesAddComponent } from './vehicules-add/vehicules-add.component';
@@ -40,11 +42,15 @@ const routes: Routes = [
     { path:'vehicule-request-list', component:VehiculeRequestListComponent },
     { path:'admin-vehicule-request-list', component:AdminVehiculesRequestsComponent },
     { path:'parc-vehicule-request-list', component:ParcManagerVehiculesRequestsComponent },
+    { path:'parc-vehicule-request-list-all', component:ParcManagerAllRequestsComponent },
+    
     
     { path:'admin-vehicule-request-list-all', component:AdminVehiculesRequestAllComponent },
     { path:'admin-vehicule-request-details/:id', component:AdminVehiculesRequestsComponent },
     { path:'admin-employees', component:EmployeesManagemenetComponent },
     { path:'admin-employees-add', component:EmployeeAddComponent },
+    { path:'admin-employees-edit/:id', component:EmployeeEditComponent },
+    
     
     
 

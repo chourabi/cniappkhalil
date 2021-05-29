@@ -35,11 +35,7 @@ export class EmployeesManagemenetComponent implements OnInit {
   deleteEmployee(id){
       if (confirm("Do you really wonna delete this item ?")) {
         this.api.deleteEmployee(id).subscribe((data:any)=>{
-          if (data.success) {
-            this.getEmployeeList();
-          } else {
-            alert(data.message);
-          }
+          this.getEmployeeList();
         },(err)=>{
           alert('Something went wrong, please try again.')
         })

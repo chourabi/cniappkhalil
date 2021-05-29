@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
-  selector: 'app-parc-manager-vehicules-requests',
-  templateUrl: './parc-manager-vehicules-requests.component.html',
-  styleUrls: ['./parc-manager-vehicules-requests.component.css']
+  selector: 'app-parc-manager-all-requests',
+  templateUrl: './parc-manager-all-requests.component.html',
+  styleUrls: ['./parc-manager-all-requests.component.css']
 })
-export class ParcManagerVehiculesRequestsComponent implements OnInit {
+export class ParcManagerAllRequestsComponent implements OnInit {
 
 
   requestList:any= [];
@@ -40,7 +40,7 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
 
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
-      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 1 )
+      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status != 0 )
     })
 
     this.getDrivers();
@@ -145,6 +145,4 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
 
     
   }
-
-
 }

@@ -91,11 +91,20 @@ export class HomeComponent implements OnInit {
               subMenus: []
             },
             {
-              title: "Parc vehicules request",
+              title: "New parc vehicules request",
               counter: 0,
               link: '/dashboard/home/parc-vehicule-request-list',
               subMenus: []
             },
+            {
+              title: "Historic of all vehicules request",
+              counter: 0,
+              link: '/dashboard/home/parc-vehicule-request-list-all',
+              subMenus: []
+            },
+
+
+            
             {
               title: "Parc drivers",
               counter: 0,

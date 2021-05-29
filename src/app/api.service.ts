@@ -411,4 +411,22 @@ export class ApiService {
   }
 
 
+  deleteDriver(id){
+    const token = localStorage.getItem("token");
+    const tokenType = localStorage.getItem("tokenType");
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization':tokenType+' '+token
+      })
+    };
+    return this.http.get(environment.apiEndPoint + '/api/drivers/delete/'+id,
+      
+      httpOptions
+
+    )
+  }
+
+
 }

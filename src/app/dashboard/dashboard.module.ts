@@ -21,10 +21,12 @@ import { EmployeesManagemenetComponent } from './employees-managemenet/employees
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { DashComponent } from './dash/dash.component';
 import { DriversEditComponent } from './drivers-edit/drivers-edit.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { ParcManagerAllRequestsComponent } from './parc-manager-all-requests/parc-manager-all-requests.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent, DriversListComponent, DriversAddComponent, EmployeesManagemenetComponent, EmployeeAddComponent, DashComponent, DriversEditComponent],
+  declarations: [DashboardComponent, HomeComponent, VehiculesListComponent, VehiculesAddComponent, VehiculesEditComponent, AddNewVehiculeRequestComponent, VehiculeRequestListComponent, AdminVehiculesRequestsComponent, RequestVehiculeDetailsComponent, AdminVehiculesRequestAllComponent, ParcManagerVehiculesRequestsComponent, DriversListComponent, DriversAddComponent, EmployeesManagemenetComponent, EmployeeAddComponent, DashComponent, DriversEditComponent, EmployeeEditComponent, ParcManagerAllRequestsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

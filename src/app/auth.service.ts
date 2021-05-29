@@ -51,6 +51,31 @@ export class AuthService {
 
   }
 
+
+  updateAccount(username, email,name,category,cinId,role,id) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http.post(environment.apiEndPoint + '/api/auth/update',
+      {
+       
+        "id":id,
+        "username":username,
+        "name":name,
+        "email":email,
+        "category":category,
+        "cindId":cinId,
+        "role":[role]
+      },
+      httpOptions
+
+    )
+
+  }
+
   info() {
 
     const token = localStorage.getItem("token");

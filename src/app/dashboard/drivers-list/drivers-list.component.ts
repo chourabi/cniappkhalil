@@ -30,7 +30,10 @@ export class DriversListComponent implements OnInit {
   }
 
   deleteDriver(id){
-
-  }
+    this.api.deleteDriver(id).subscribe((data)=>{
+      console.log(data);
+      this.getDriversList();
+    })
+  } 
 
 }

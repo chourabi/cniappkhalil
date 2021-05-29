@@ -40,11 +40,14 @@ export class VehiculeRequestListComponent implements OnInit {
 
         var tmp = [];
 
-        this.requestList.forEach(req => {
+        for (let j = 0; j < this.requestList.length; j++) {
+          const req = this.requestList[j];
+
           if (req.request.status == f) {
             tmp.push(req);
           }
-        });
+          
+        }
 
 
         console.log(tmp);
