@@ -73,9 +73,9 @@ export class ParcManagerVehiculesRequestsComponent implements OnInit {
         (today.getFullYear() == requestDate.getFullYear()) ) {
 
           if (r.request.driver != null) {
-            this.warningMessage.push('You have a new vehicule request assigned to '+r.request.driver.name+' on the vehicule : '+r.request.vehicule.registrationPlate+' today');
+            this.warningMessage.push('You have a new vehicule request assigned to '+r.request.driver.name+' on the vehicule : '+r.request.vehicule.registrationPlate+' today at: '+r.request.startTime);
           }else{
-            this.warningMessage.push('You have a new vehicule request with no driver on the vehicule : '+r.request.vehicule.registrationPlate+' today');
+            this.warningMessage.push('You have a new vehicule request with no driver on the vehicule : '+r.request.vehicule.registrationPlate+' today at: '+r.request.startTime);
           }
           
         }

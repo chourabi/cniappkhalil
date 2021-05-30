@@ -39,13 +39,12 @@ export class ParcManagerAllRequestsComponent implements OnInit {
 
 
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
-      console.log(data);
+      console.log("parc manager history",data);
       this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status != 0 )
     })
 
     this.getDrivers();
 
-    this.checkWarningMessage();
   }
 
 
@@ -111,7 +110,7 @@ export class ParcManagerAllRequestsComponent implements OnInit {
   refresh(){
     this.api.getAdminVehiculesRequest().subscribe((data:any)=>{
       console.log(data);
-      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status == 1 )
+      this.requestList =data.sort((a, b) => a.request.id - b.request.id).reverse().filter((r)=> r.request.status != 0 )
     })
   }
 
